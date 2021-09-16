@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
-const password = 'yxffKcSs96MMXxN8'
 @Module({
   imports: [
-    MongooseModule.forRoot(`mongodb+srv://erca:${password}@fabioteste.7iby2.mongodb.net/test`),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGODB_STRING_CONECTION),
     ProductsModule
   ],
   controllers: [],
