@@ -11,9 +11,11 @@ export class ProductsService {
     @InjectModel(Product.name) private productModel: Model<ProductDocument>,
   ) {}
 
-  create(createProductDto: CreateProductDto) {
-    const product = new this.productModel(createProductDto);
-    return product.save();
+  async create(createProductDto: CreateProductDto[]) {
+    // const product = new this.productModel(createProductDto);
+    // return product.save();
+    const product = await this.productModel.create(createProductDto);
+    return product;
   }
 
   async findAll(search: string, page: number, size: number) {
@@ -39,7 +41,7 @@ export class ProductsService {
         size,
         totalElements,
         totalPages,
-        number: page,
+        number: products.length,
       },
       _embedded: { products },
     };
