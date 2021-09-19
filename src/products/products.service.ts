@@ -41,7 +41,7 @@ export class ProductsService {
         size,
         totalElements,
         totalPages,
-        number: products.length,
+        number: page,
       },
       _embedded: { products },
     };
