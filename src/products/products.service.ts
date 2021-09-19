@@ -38,7 +38,7 @@ export class ProductsService {
 
     const response = {
       page: {
-        size,
+        size: products.length,
         totalElements,
         totalPages,
         number: page,
