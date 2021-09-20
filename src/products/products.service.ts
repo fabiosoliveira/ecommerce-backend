@@ -27,7 +27,7 @@ export class ProductsService {
 
     const products = await this.productModel
       .find({ name: regexp })
-      .select('name')
+      .select('name previewPrice currentPrice')
       .skip(skip)
       .limit(size);
 
